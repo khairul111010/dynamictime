@@ -9,7 +9,7 @@ const showAmPm = true;
 // Show Time
 async function showTime() {
   const response = await fetch(
-    "http://worldtimeapi.org/api/timezone/Asia/Dhaka"
+    "https://worldtimeapi.org/api/timezone/Asia/Dhaka"
   );
   const data = await response.json();
   const date = data.datetime.split("T")[1].split(".")[0].split(":");
