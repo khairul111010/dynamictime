@@ -3,7 +3,6 @@ const time = document.getElementById("time"),
   greeting = document.getElementById("greeting"),
   name = document.getElementById("name"),
   focus = document.getElementById("focus");
-let HOURS = "HOURSS";
 // Options
 const showAmPm = true;
 // Show Time
@@ -14,9 +13,10 @@ async function showTime() {
   const data = await response.json();
   const date = data.datetime.split("T")[1].split(".")[0].split(":");
 
-  let hour = (HOURS = date[0]);
+  let hour = date[0];
   let min = date[1];
   let sec = date[2];
+  setBgGreet(hour);
 
   // Set AM or PM
   const amPm = hour >= 12 ? "PM" : "AM";
@@ -26,6 +26,7 @@ async function showTime() {
   time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec} ${
     showAmPm ? amPm : ""
   }`;
+
   setTimeout(showTime, 1000);
 }
 
@@ -35,10 +36,10 @@ async function showTime() {
 // }
 
 // Set Background and Greeting
-function setBgGreet() {
+function setBgGreet(HOURS) {
   // let today = new Date(),
   //   hour = today.getHours();
-
+  // console.log(HOURS);
   if (HOURS < 12) {
     // Morning
     document.body.style.backgroundImage = "url('./morning.jpg')";
